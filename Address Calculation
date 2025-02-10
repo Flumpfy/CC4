@@ -1,0 +1,69 @@
+package cc4;
+import java.util.Scanner; 
+public class AddressCalculation {
+	public static void main (String [] args) {
+		Scanner userInput = new Scanner(System.in);
+		
+		//input for the Number of dimension
+		System.out.println("Please enter your number of dimension: ");
+		int numOfDimension = userInput.nextInt();
+		
+		
+		//Inputs for base number 
+		System.out.println("Please enter your number for your base address (Alpha): ");
+		int numOfBase = userInput.nextInt();
+		
+		
+		//Inputs for our element size 
+		System.out.println("Please enter your number for your element size: ");
+		int sizeOfElem = userInput.nextInt();
+		
+		
+		//Inputs for our upper bounds
+		int[] upperBounds = new int [numOfDimension];
+		for(int i = 0; i < numOfDimension; i++) {
+			System.out.println("Please enter the number for your upper bound for our dimension "+ (i+1) + ": ");
+			upperBounds[1] = userInput.nextInt();
+		}
+		
+		
+		//Inputs for the target element indicates 
+		int[] tarIndicate = new int [numOfDimension];
+		for(int i = 0; i < numOfDimension; i++) {
+			System.out.println("Please enter the index for your dimension "+ (i + 1) + ": ");
+			tarIndicate[1] = userInput.nextInt();
+		}
+		
+		//Our calculation of the address for our target element 
+		int address = calculateAddress(numOfBase, sizeOfElem, upperBounds, tarIndicate);
+		
+		
+		
+		//The output for our result 
+		System.out.println("The address of your target element is: " + address);
+		
+		}
+		
+		private static int calculateAddress(int numOfBase, int sizeOfElem, int[] upperBounds, int[] tarIndicate) {
+		int numOfDimension = upperBounds.length;
+		int addressOffSet = 0;
+		
+		//calculation of the address offset based on row major order
+		for (int i = 0; i < numOfDimension; i++) {
+			int size = 1;
+			for (int j = i + 1; j < numOfDimension; j++) {
+				size *= (upperBounds[j]);
+			}
+			addressOffSet += tarIndicate[i] * size;
+		}
+		
+		
+		return numOfBase + (addressOffSet * sizeOfElem);
+		
+		
+		
+		
+		
+		
+	}
+}
