@@ -23,7 +23,7 @@ public class AddressCalculation {
 		int[] upperBounds = new int [numOfDimension];
 		for(int i = 0; i < numOfDimension; i++) {
 			System.out.println("Please enter the number for your upper bound for our dimension "+ (i+1) + ": ");
-			upperBounds[1] = userInput.nextInt();
+			upperBounds[i] = userInput.nextInt();
 		}
 		
 		
@@ -31,7 +31,7 @@ public class AddressCalculation {
 		int[] tarIndicate = new int [numOfDimension];
 		for(int i = 0; i < numOfDimension; i++) {
 			System.out.println("Please enter the index for your dimension "+ (i + 1) + ": ");
-			tarIndicate[1] = userInput.nextInt();
+			tarIndicate[i] = userInput.nextInt();
 		}
 		
 		//Our calculation of the address for our target element 
